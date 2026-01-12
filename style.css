@@ -38,7 +38,11 @@ body {
 /* ===== Header Section - Using Flexbox ===== */
 .header {
   grid-area: header;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
   color: var(--text-color);
   padding: 40px;
   text-align: center;
@@ -48,9 +52,19 @@ body {
   align-items: center;
   gap: 10px;
 }
-.header h1,
-.header p {
-    color: var(--white-color)
+
+.header-content {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 30px 40px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Using Flexbox for content inside the box */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .name {
@@ -128,7 +142,7 @@ body {
 
 .section h2 {
   font-size: 1.5em;
-  color: var(--secondary-color);
+  color: var(--text-color);
   margin-bottom: 15px;
   padding-bottom: 10px;
   border-bottom: 2px solid var(--text-color);
@@ -136,25 +150,27 @@ body {
 
 .section h3 {
   font-size: 1.2em;
-  color: var(--secondary-color);
+  color: var(--text-color);
   margin-bottom: 5px;
 }
 
-/* ===== Skills List - Using Grid ===== */
-.skills-list {
-  list-style: none;
-  /* Using CSS Grid for skills layout */
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
+/* ===== Skills Tag Cloud - Using Flexbox ===== */
+.skills-cloud {
+  /* Using Flexbox for tag cloud layout */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.skills-list li {
-  background-color: var(--accent-color);
-  color: var(--text-color);
-  padding: 10px 15px;
+.skill-tag {
+  background-color: var(--text-color);
+  color: var(--white-color);
+  padding: 8px 12px;
   border-radius: 5px;
   font-size: 0.9em;
+  /* Inline-block ensures minimum width based on content */
+  display: inline-block;
+  white-space: nowrap;
 }
 
 /* ===== Education and Certifications ===== */
