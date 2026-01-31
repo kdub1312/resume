@@ -332,3 +332,53 @@ body {
     font-size: 1.3em;
   }
 }
+
+/* ===== Print Styles ===== */
+@media print {
+  .container {
+    max-width: 100%;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .header {
+    padding: 20px;
+  }
+
+  /* Single column layout for print */
+  .main-content {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "content"
+      "sidebar";
+  }
+
+  .sidebar {
+    border-right: none;
+    border-top: 2px solid var(--accent-color);
+    page-break-inside: avoid;
+  }
+
+  /* Reorder sections: Professional Summary first, then sidebar content */
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content .section:first-child {
+    order: 1; /* Professional Summary */
+  }
+
+  .sidebar {
+    order: 2; /* Skills, Education, Certifications */
+  }
+
+  .content .section:nth-child(2) {
+    order: 3; /* Work Experience */
+  }
+
+  .content .section:nth-child(3) {
+    order: 4; /* Repos */
+    page-break-before: always;
+  }
+}
